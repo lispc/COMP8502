@@ -32,12 +32,12 @@ if __name__ == "__main__" :
 		print("python extract.py <path-to-apk> <output>")
 	else:
 		a, d, dx = AnalyzeAPK(sys.argv[1])
-		app_perms = a.get_permissions()
+		app_perms = set(map(lambda x: x.rsplit('.', 1)[-1], a.get_permissions()))
 		data = []
 		for perm in ALL_PERMISSIONS:
 			if perm in app_perms:
-				data.append(1)
+				data.append(True)
 			else:
-				data.append(0)
+				data.append(False)
 
 		arff.dump(sys.argv[2], [data], relation="APK", names=ALL_PERMISSIONS)
