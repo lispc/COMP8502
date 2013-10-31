@@ -23,13 +23,14 @@ from androguard.core.analysis.analysis import *
 from androguard.core.analysis.ganalysis import *
 from androguard.core.analysis.risk import *
 from androguard.decompiler.decompiler import *
+import cPickle
 
-from androguard.core.bytecodes.api_permissions import DVM_PERMISSIONS_BY_PERMISSION
+ALL_PERMISSIONS = cPickle.load(open('perms.pickle','r'))
 
-ALL_PERMISSIONS = sorted(DVM_PERMISSIONS_BY_PERMISSION.keys())
-
-def get_app_data(app, malware):
-	app_perms = set(map(lambda x: x.rsplit('.', 1)[-1], app.get_permissions()))
+def get_app_data(folder, app_path, malware):
+	#app, d, dx = AnalyzeAPK(os.path.join(folder, app_path))
+	app = APK(os.path.join(folder, app_path))
+	app_perms = set(app.get_permissions())
 	data = [malware]
 	for perm in ALL_PERMISSIONS:
 		if perm in app_perms:
@@ -49,13 +50,15 @@ if __name__ == "__main__" :
 		apps = listdir(sys.argv[1])
 		malware = listdir(sys.argv[2])
 		data = []
+		i = 1
 		for app in apps:
-			print(app)
-			a, d, dx = AnalyzeAPK(os.path.join(sys.argv[1], app))
-			data.append(get_app_data(a, False))
+			print(str(i) + "/" + str(len(apps)) + " " + app)
+			data.append(get_app_data(sys.argv[1], app, False))
+			i += 1
+		i = 1
 		for mal in malware:
-			print(mal)
-			a, d, dx = AnalyzeAPK(os.path.join(sys.argv[2], mal))
-			data.append(get_app_data(a, True))
+			print(str(i) + "/" + str(len(malware)) + " " + mal)
+			data.append(get_app_data(sys.argv[1], app, True))
+			i += 1
 			
 		arff.dump(output, data, relation="APK", names=["MALWARE"] + ALL_PERMISSIONS)
