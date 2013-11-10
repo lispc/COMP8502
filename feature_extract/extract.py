@@ -80,7 +80,7 @@ if __name__ == "__main__" :
 		i = 1
 		for mal in malware:
 			print(str(i) + "/" + str(len(malware)) + " " + mal)
-			data.append(get_app_data(sys.argv[1], app, True))
+			data.append(get_app_data(sys.argv[2], mal, True))
 			i += 1
 			
 		arff.dump(output, data, relation="APK", names=NAMES)
