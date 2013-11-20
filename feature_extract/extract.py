@@ -33,11 +33,11 @@ API_CALLS = ["getDeviceId", "getCellLocation", "setFlags", "addFlags", "setDataA
 NAMES = ["MALWARE", "APP_NAME"] + ALL_PERMISSIONS + map(lambda x: x[1:].upper(), FILE_EXTENSIONS) + API_CALLS + ["DEXLEN", "PACKLEN", "FILENO", "ACTNO", "SERVICENO", "PROVIDERNO", "CRYPTO", "TELEPHONY", "NET", "DYN_CODE", "NATIVE_CODE", "REFLECTION", "CLASSES", "METHODS", "FIELDS"]
 
 def get_app_data(folder, app_name, malware):
-	data = [malware]
+    data = [malware]
     app_path = os.path.join(folder, app_name)
     return analyze(app_path, data)
 
-def analyze(app_path, data):
+def analyze(app_path, data = []):
 	app, d, dx = AnalyzeAPK(app_path)
 	#app = APK(os.path.join(folder, app_path))
 	app_perms = set(app.get_permissions())
