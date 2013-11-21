@@ -1,19 +1,23 @@
 \section{Methodology}
-TODO
+In section, we describe how we obtained the dataset, what features we extracted and how, and then, we provide details about the classification models and their evaluation...
 
 \subsection{Dataset}
-We downloaded 1557 apps from the F-droid \cite{fdroid} repository which lists FOSS (Free and Open Source Software) apps for the Android platform. Then, we obtained 283 malware samples from the Contagio Mobile \cite{contagion} security blog.
+We downloaded 1557 apps from the F-droid \cite{fdroid} repository which lists FOSS (Free and Open Source Software) apps for the Android platform. Then, we obtained 283 malware samples from the Contagio Mobile \cite{contagio} security blog.
 
 \subsection{Feature extraction}
-Androlyze TODO
+We used the Androguard \cite{androguard} Python toolkit for reverse engineering Android applications. This toolkit allowed us to analyse all aspects of Android applications: properties and permissions in their XML manifests, API calls and package usage in their DEX files (Android's byte code format). The extracted features are described below.
+
 \subsubsection{Permissions}
-TODO
+Permissions included in the Android Manifest are a good discriminatory candidate for malware and some previous work used only them. Malware applications are more likely to require many non-standard permissions, such as access to contacts, sending SMS, checking a phone's status, writing to an external storage, or connecting to the internet.
+
 \subsubsection{Files}
-TODO
+Malware applications may contain some unusual files, for example another applications zipped inside it.
+
 \subsubsection{API Calls}
-TODO
+Permissions are a good starting point for malware detection, but they do not provide a definite answer. Firstly, some non-malware apps may require more permissions in their manifests than they actually need in their code. Secondly, there might be exploits that allow a malicious code to be executed even without specified permissions. For these reasons, looking at API calls seems to be a good idea. Malware applications are more likely to call Runtime.exec, do various String manipulations, try to read various phone properties and statuses etc.
+
 \subsubsection{Miscellaneous}
-TODO
+There are other static properties that may be helpful in malware detection: usage of telephony, cryptography and network packages, dynamic class loading and reflection, or a native code...
 
 \subsection{Classification}
 TODO
