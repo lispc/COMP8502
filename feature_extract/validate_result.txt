@@ -1,0 +1,54 @@
+validating using model weka.classifiers.bayes.NaiveBayes and with option 
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  259   24 |    a = True
+  121 1436 |    b = False
+
+Time: 1.152334797 s
+validating using model weka.classifiers.bayes.NaiveBayes and with option -K
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  221   62 |    a = True
+   11 1546 |    b = False
+
+Time: 1.621232601 s
+validating using model weka.classifiers.bayes.NaiveBayes and with option -D
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  217   66 |    a = True
+    9 1548 |    b = False
+
+Time: 1.196409665 s
+validating using model weka.classifiers.trees.J48 and with option -C 0.25 -M 2
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  248   35 |    a = True
+   12 1545 |    b = False
+
+Time: 6.57940638 s
+validating using model weka.classifiers.meta.AdaBoostM1 and with option -P 100 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  225   58 |    a = True
+   30 1527 |    b = False
+
+Time: 4.759757241 s
+validating using model weka.classifiers.meta.LogitBoost and with option -P 100 -F 0 -R 1 -L -1.7976931348623157E308 -H 1.0 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  238   45 |    a = True
+   14 1543 |    b = False
+
+Time: 11.581940393 s
