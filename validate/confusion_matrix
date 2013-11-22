@@ -1,0 +1,45 @@
+validating using model weka.classifiers.bayes.NaiveBayes and with option 
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  259   24 |    a = True
+  121 1436 |    b = False
+
+Time: 1.19603941 s
+validating using model weka.classifiers.trees.J48 and with option -C 0.25 -M 2
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  248   35 |    a = True
+   12 1545 |    b = False
+
+Time: 6.596973118 s
+validating using model weka.classifiers.bayes.BayesNet and with option -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  219   64 |    a = True
+    9 1548 |    b = False
+
+Time: 1.530954996 s
+validating using model weka.classifiers.functions.SMO and with option -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -C 250007 -E 1.0"
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  257   26 |    a = True
+    8 1549 |    b = False
+
+Time: 6.867557399 s
+validating using model weka.classifiers.meta.AdaBoostM1 and with option -P 100 -S 1 -I 10 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2
+Stat:
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  256   27 |    a = True
+    2 1555 |    b = False
+
+Time: 68.256558921 s
