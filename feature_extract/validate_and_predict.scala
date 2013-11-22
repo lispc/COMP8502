@@ -30,27 +30,45 @@ object Test{
 		Array("weka.classifiers.bayes.NaiveBayes","-D"),
 		Array("weka.classifiers.trees.J48","-C 0.25 -M 2"),
 		Array("weka.classifiers.meta.AdaBoostM1","-P 100 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump"),
-		Array("weka.classifiers.meta.LogitBoost","-P 100 -F 0 -R 1 -L -1.7976931348623157E308 -H 1.0 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump"))
+		Array("weka.classifiers.meta.LogitBoost","-P 100 -F 0 -R 1 -L -1.7976931348623157E308 -H 1.0 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump"),
+		Array("weka.classifiers.bayes.BayesNet","-D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5"),
+		Array("weka.classifiers.meta.Bagging","-P 100 -S 1 -num-slots 1 -I 10 -W weka.classifiers.trees.REPTree -- -M 2 -V 0.001 -N 3 -S 1 -L -1 -I 0.0"),
+		Array("weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K \"weka.classifiers.functions.supportVector.PolyKernel -C 250007 -E 1.0\""),
+		Array("weka.classifiers.meta.AdaBoostM1","-P 100 -S 1 -I 10 -W weka.classifiers.trees.J48 -- -C 0.25 -M 2")
+		)
 		return schemes
 	}
-	def testOnce(fname: String, methodIndex: Int = 0)
+	def testOnce(fname: String, clsname: String, optionstr: String)
 	{
 		var testData = getData(fname)
-		var schemes = getSchemes()
-		var scheme = schemes(methodIndex)
-		var cls = AbstractClassifier.forName(scheme(0),Utils.splitOptions(scheme(1)))
+		var cls = AbstractClassifier.forName(clsname,Utils.splitOptions(optionstr))
 		cls.buildClassifier(getData())
 		var i = 0
 		while(i<testData.numInstances())
 		{
-			println(cls.distributionForInstance(testData.instance(i)).mkString(" "))
+			//println(cls.distributionForInstance(testData.instance(i)).mkString(" "))
 			//var ins = testData.instance(i)
 			//var res = cls.classifyInstance(ins)
 			//var res = cls.dis
 			//println(res)
-			//println(cls.classifyInstance(testData.instance(i)))
+			var res = cls.classifyInstance(testData.instance(i))
+			if(Math.abs(res-1.0)<=0.0001)
+			{
+				println("False")
+			}
+			else
+			{
+				println("True")
+			}
 			i=i+1
 		}
+
+	}
+	def testOnce(fname: String, methodIndex: Int = 0)
+	{
+		var schemes = getSchemes()
+		var scheme = schemes(methodIndex)
+		testOnce(fname, scheme(0),scheme(1))
 	}
 	def validateModel(){
 	var prefix = "-t ./training_trimmed.arff -c 1 -o "
@@ -73,12 +91,22 @@ object Test{
 	}
 	def main(args: Array[String])
 	{
-		//var schemes = getSchemes().zipWithIndex
-		for (i <- 0 until getSchemes().length)
+		if(args.length!=3)
+		{
+			println("args length should be four")
+			println(args.mkString("*"))
+			exit(1)
+		}
+		var fname = args(0)
+		var clsname = args(1)
+		var optionstr = args(2)
+		testOnce(fname,clsname,optionstr)
+		/*var schemes = getSchemes().zipWithIndex
+		//for (i <- 0 until getSchemes().length)
 		{
 			println("predicting with "+(getSchemes()(i)(0)))
 			testOnce("test.arff",i)
-		}
+		}*/
 	}
 
 
