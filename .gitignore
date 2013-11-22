@@ -29,8 +29,8 @@ nosetests.xml
 
 # Translations
 *.mo
-test_scala.sh
 *.log
+*.class
 # Mr Developer
 .mr.developer.cfg
 .project
