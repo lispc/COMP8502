@@ -5,7 +5,7 @@ In section, we describe how we obtained the dataset, what features we extracted 
 We downloaded 1557 apps from the F-droid \cite{fdroid} repository which lists FOSS (Free and Open Source Software) apps for the Android platform. Then, we obtained 283 malware samples from the Contagio Mobile \cite{contagio} security blog.
 
 \subsection{Feature extraction}
-We used the Androguard \cite{androguard} Python toolkit for reverse engineering Android applications. This toolkit allowed us to analyse all aspects of Android applications: properties and permissions in their XML manifests, API calls and package usage in their DEX files (Android's byte code format). The extracted features are described below.
+We used the Androguard \cite{androguard} Python toolkit for reverse engineering Android applications. This toolkit allowed us to analyse all aspects of Android applications: properties and permissions in their XML manifests, API calls and package usage in their DEX files (Android's byte code format). In total, we extracted 575 features. The extracted features are described below.
 
 \subsubsection{Permissions}
 Permissions included in the Android Manifest are a good discriminatory candidate for malware and some previous work used only them. Malware applications are more likely to require many non-standard permissions, such as access to contacts, sending SMS, checking a phone's status, writing to an external storage, or connecting to the internet.
@@ -20,7 +20,7 @@ Permissions are a good starting point for malware detection, but they do not pro
 There are other static properties that may be helpful in malware detection: usage of telephony, cryptography and network packages, dynamic class loading and reflection, or a native code...
 
 \subsection{Classification}
-TODO
+The classification part -- pre-processing, training, validation, and prediction -- was implemented in Scala, reusing some components from Weka \cite{weka}, such as some of its classifiers and the evaluation framework.
 
 \subsection{Experimental setting}
-TODO
+The reported performance in the next section shows the result from a stratified 10-fold cross-validation. The running time was measured in the source code (\texttt{System.nanoTime()}) and using the \texttt{time} command -- median times of 10 runs are reported.
