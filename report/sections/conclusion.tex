@@ -1,6 +1,11 @@
 \section{Conclusion}
 \subsection{Future Work}
-TODO
+\subsubsection{Additional Dataset}
+We requested an access to additional malware applications via Prof Yu, but we did not receive a reply before the deadline. One natural thing would be to train and evaluate this project on a different dataset.
+\subsubsection{Dynamic Features}
+In real world scenarios, it might be desirable to move the threshold such that the system is more sensitive to potential malware applications -- i.e. a higher recall for the price of a possibly lower precision. Given the presented performance, we can assume that the majority of malware would be detected, but some normal apps might be misclassified.
+
+For this reason, it might be attractive to add one other tier to the system for the verification. One can extract additional features from measuring the dynamic execution of applications. This, however, requires a lot of time and computing power and there are hundreds of new applications uploaded every day, so it is not desirable to do it for every single one. It can be used to double-check the static prediction to prevent some misclassifications.
 
 \subsection{Summary}
-TODO
+This report described the COMP8502 project about using machine learning methods to detect malicious Android applications based on the reverse engineered static features. TODO
