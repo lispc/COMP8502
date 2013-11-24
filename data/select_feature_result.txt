@@ -1,0 +1,35 @@
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Attribute ranking.
+	Threshold for discarding attributes:   0     
+
+Attribute Evaluator (supervised, Class (nominal): 1 MALWARE):
+	Information Gain Ranking Filter
+
+Ranked attributes:
+ 0.317     568 TELEPHONY
+ 0.308     518 sendTextMessage
+ 0.264     561 DEXLEN
+ 0.245     142 android.permission.SEND_SMS
+ 0.233     507 append
+ 0.229     163 android.permission.READ_PHONE_STATE
+ 0.221     495 getDeviceId
+ 0.207     547 valueOf
+ 0.205     574 METHODS
+ 0.203     533 setRequestMethod
+ 0.192     506 write
+ 0.189     573 CLASSES
+ 0.188     551 read
+ 0.186     522 getNetworkOperator
+ 0.185     508 indexOf
+ 0.181     509 substring
+ 0.175     323 XML
+ 0.165     226 android.permission.INSTALL_PACKAGES
+ 0.163     563 FILENO
+ 0.162     575 FIELDS
+
+Selected attributes: 568,518,561,142,507,163,495,547,574,533,506,573,551,522,508,509,323,226,563,575 : 20
+
