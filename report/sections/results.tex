@@ -3,11 +3,11 @@ We experimented with many different configurations of classifiers and pre-proces
 
 Table 1 shows the results of the 10-fold cross-validation. We can see that SVM and Decision Trees achieved the best accuracies which, after performing a corrected paired t-test, are better than Naive Bayes and Bayesian Networks at the level of significance 0.01.
 
-Naive Bayes, despite having the lowest accuracy, was the fastest among all algorithms and has the lowest false negative rate, i.e. classified the majority of malware applications correctly. On the other hand, its false negative rate, after a corrected paired t-test, is only significantly better than Bayesian Networks. Overall, SVM seems to be the best classifier: it has the best accuracy, a low false negative rate and a relatively low execution time.
+Naive Bayes, despite having the lowest accuracy, was the fastest among all algorithms and has the lowest false positive rate (malware applications predicted as normal ones), i.e. classified the majority of malware applications correctly. On the other hand, its false positive rate, after a corrected paired t-test, is only significantly better than Bayesian Networks. Overall, SVM seems to be the best classifier: it has the best accuracy, a low false negative rate and a relatively low execution time.
 \captionof{table}{Overall Comparison}
 \begin{tabular}{|l|l l l l|}
 \hline
-Method & False Negative & False Positive & Accuracy & Training + Validation Time \\
+Method & False Positive & False Negative & Accuracy & Training + Validation Time \\
 \hline
 Naive Bayes & 8.5\% & 7.8\% & 92.1\% & 1.2s \\
 Decision Tree & 12.4\% & 0.8\% & 97.4\% & 6.6s \\
@@ -19,46 +19,46 @@ AdaBoost (C4.5) & 9.5\% & 0.1\% & 98.4\% & 68.3s \\
 \captionof{table}{Naive Bayes: Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Actual / Prediction & Malware & Non-malware \\
+Actual / Prediction & Malware & Normal \\
 \hline
 Malware & 259 & 24 \\
-Non-malware & 121 & 1436 \\
+Normal & 121 & 1436 \\
 \hline
 \end{tabular}
 \captionof{table}{Decision Tree: Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Actual / Prediction & Malware & Non-malware \\
+Actual / Prediction & Malware & Normal \\
 \hline
 Malware & 221 & 62 \\
-Non-malware & 11 & 1546 \\
+Normal & 11 & 1546 \\
 \hline
 \end{tabular}
 \captionof{table}{Bayesian Networks: Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Actual / Prediction & Malware & Non-malware \\
+Actual / Prediction & Malware & Normal \\
 \hline
 Malware & 221 & 66 \\
-Non-malware & 9 & 1548 \\
+Normal & 9 & 1548 \\
 \hline
 \end{tabular}
 \captionof{table}{SVM (SMO): Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Actual / Prediction & Malware & Non-malware \\
+Actual / Prediction & Malware & Normal \\
 \hline
 Malware & 248 & 35 \\
-Non-malware & 12 & 1545 \\
+Normal & 12 & 1545 \\
 \hline
 \end{tabular}
 \captionof{table}{AdaBoost (C4.5): Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Actual / Prediction & Malware & Non-malware \\
+Actual / Prediction & Malware & Normal \\
 \hline
 Malware & 225 & 58 \\
-Non-malware & 30 & 1527 \\
+Normal & 30 & 1527 \\
 \hline
 \end{tabular}
 
