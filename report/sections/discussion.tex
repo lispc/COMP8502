@@ -1,2 +1,8 @@
 \section{Discussion}
-....
+Extraction of static features is possibly less difficult to implement than measuring some dynamic features. At the same time, it is stable and runs much faster. And as we have shown, commonly used classifiers can be trained on this data and achieve high accuracies and low false positive rates.
+
+In comparison with \cite{shabtai_2010} and \cite{sanz_2012}, we achieved similar results, but their datasets did not contain any malware, so they were categorising applications based on their functionality. Our project is more similar to \cite{kim_malicious}, but we obtained better results in the 10-fold cross-validation: the accuracy of around 98 \% (vs 77\%) and the false positive rate around 9 \% (vs 17 \%). There are two possible explanations for this difference.
+
+One is the difference in between our and their dataset. We collected about twice as many apps: 1557 normal ones (vs 893) and 283 malware ones (vs 110). We used the same source for malware apps as \cite{kim_malicious}, but we also included some newly published malware samples.
+
+The other possible explanation is that we extract some additional features which may provide classifiers with some additional useful information, for example the use of different packages, dynamic class loading or native methods. Overall, we showed that one does not need to sacrifice a good accuracy in order to achieve lower false positive rates -- in our scenario, it is possible to improve both of these important metrics by using a larger dataset and extracting additional features.
