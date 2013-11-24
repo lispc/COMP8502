@@ -18,7 +18,10 @@ mainClass in oneJar := Some("Test")
 
 libraryDependencies += "commons-lang" % "commons-lang" % "2.6"
 //libraryDependencies += "com.db4o" % "db4o-full-java5" % "8.1-SNAPSHOT"
- 
+
+libraryDependencies += "nz.ac.waikato.cms.weka" % "weka-dev" % "3.7.5"
+           
+//libraryDependencies += "nz.ac.waikato.cms.weka" % "weka-stable" % "3.6.6"
 // add compile dependencies on some dispatch modules
 //libraryDependencies ++= Seq(
 //  "com.github.scala-incubator.io" %% "core"             % "0.1.1",
