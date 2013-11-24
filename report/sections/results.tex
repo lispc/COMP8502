@@ -16,56 +16,60 @@ SVM (SMO) & 9.2\% & 0.5\% & 98.2\% & 6.9s \\
 AdaBoost (C4.5) & 9.5\% & 0.1\% & 98.4\% & 68.3s \\
 \hline
 \end{tabular}
-\captionof{table}{Naive Bayes}
+\captionof{table}{Naive Bayes: Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Result & True & False \\
+Actual / Prediction & Malware & Non-malware \\
 \hline
-True & 259 & 24 \\
-Fasle & 121 & 1436 \\
+Malware & 259 & 24 \\
+Non-malware & 121 & 1436 \\
 \hline
 \end{tabular}
-\captionof{table}{Decision Tree}
+\captionof{table}{Decision Tree: Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Result & True & False \\
+Actual / Prediction & Malware & Non-malware \\
 \hline
-True & 221 & 62 \\
-Fasle & 11 & 1546 \\
+Malware & 221 & 62 \\
+Non-malware & 11 & 1546 \\
 \hline
 \end{tabular}
-\captionof{table}{Bayes Net}
+\captionof{table}{Bayesian Networks: Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Result & True & False \\
+Actual / Prediction & Malware & Non-malware \\
 \hline
-True & 221 & 66 \\
-Fasle & 9 & 1548 \\
+Malware & 221 & 66 \\
+Non-malware & 9 & 1548 \\
 \hline
 \end{tabular}
-\captionof{table}{SVM(SMO)}
+\captionof{table}{SVM (SMO): Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Result & True & False \\
+Actual / Prediction & Malware & Non-malware \\
 \hline
-True & 248 & 35 \\
-Fasle & 12 & 1545 \\
+Malware & 248 & 35 \\
+Non-malware & 12 & 1545 \\
 \hline
 \end{tabular}
-\captionof{table}{AdaBoost(C4.5)}
+\captionof{table}{AdaBoost (C4.5): Confusion Matrix}
 \begin{tabular}{|l|l l|}
 \hline
-Result & True & False \\
+Actual / Prediction & Malware & Non-malware \\
 \hline
-True & 225 & 58 \\
-Fasle & 30 & 1527 \\
+Malware & 225 & 58 \\
+Non-malware & 30 & 1527 \\
 \hline
 \end{tabular}
 
-Here is the best 20 features, according to their infomation gain. We didn't consider the correlation.
+
+\subsection{Best Features}
+To get some insight into what features were most useful, we ranked features by the Information Gain Ratio and the top 20 ones are listed in the table below. Some features may be correlated, such as using an API call sendTextMessage and requiring a SEND\_SMS permission.
+
+As we can see, the most useful features contain the usage of telephony package and relevant API calls, reading the phone's status, various String and Byte operations, networking, or the permission to install new applications. 
 
 \begin{tabular}{l l}
- feature & infogain \\
+ Feature & Information Gain Ratio \\
  TELEPHONY & 0.317 \\
  sendTextMessage & 0.308 \\
  DEXLEN & 0.264 \\
